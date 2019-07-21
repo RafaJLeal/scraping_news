@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} News {% endblock %}
+
+{% block style_css %}
+{% endblock %}
+
+
+{% block header %}
+  News
+{% endblock %}
+
+{% block content %}
+	{% if hide_me == True %}
+	<p>Your next scrape is in {{ next_scrape }} hours. <a href="https://elpais.com/"><span>Check the news on the source page.</span></a></p>
+	{% else %}
+	<form method="POST" action="{% url 'scrape' %}">
+		{% csrf_token %}
+		<button type="submit" class="btn btn-primary">Get my morning news</button>
+	</form>
+	{% endif %}
+	<br>
+		<div class="row">
+			<h3>News</h3>
+		</div>
+		<div class="row">
+			{% for object in object_list %}
+			<div class="col-sm-3 text-center">
+			<div class="panel panel-primary text-center" style="width: 100%;">
+				<div class="panel-body">
+				<a href="{{ object.url }}">
+					<img class="card-img-top" src="{{ object.image.url }}">
+				</a>
+				</div>
+				<div class="panel-footer">
+					<h5 class="card-title"><a href="{{ object.url }}">{% if object.title %}{{ object.title }}{% else %}No title{% endif %}</a></h5>
+				</div>
+			</div>
+			</div>
+			{% endfor %}
+		</div>
+{% endblock %}

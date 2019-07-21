@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Access error{% endblock %}
+{% block header %}
+	<h1>Access error</h1>
+{% endblock %}
+{% block content %}
+	<p>The user and password do not match or do not exist.</p>
+	<a class="btn btn-primary" href="{% url 'login' %}" role="button">Try again</a>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Your Dashboard - {% block title %}{% endblock %}</title>
+  <link rel='stylesheet' href='{% static "css/bootstrap.min.css" %}'>
+  <link rel='stylesheet' href='{% static "css/custom.css" %}'>
+  {% block style_css %}{% endblock %}
+  <script src='{% static "js/jquery-3.3.1.min.js" %}'></script>
+  <script src='{% static "js/bootstrap.min.js" %}'></script>
+  {% block jss %}{% endblock %}
+</head>
+<body>
+  <nav class="navbar navbar-expand-md bg-primary navbar-dark" id="banner">
+    <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand" href="{% url 'home' %}"><span>Your dashboard - {% block header %}{% endblock %}</span></a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            User actions
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'changeUserData' %}">Change user data</a>
+            <a class="dropdown-item" href="{% url 'changeUserPassword' %}">Change user password</a>
+            <a class="dropdown-item" href="{% url 'close' %}">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+  <br>
+  <div class="container">
+	{% block content %}{% endblock %}
+  <br>
+  <br>
+  <br>
+  <br>
+  </div>
+  <footer>
+    <div class="jumbotron">
+      <div class="container">
+  	    <p>Web scraping news</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

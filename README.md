@@ -1,5 +1,4 @@
-# scraping_news
-Web scraping news
+# Web scraping news
 
 Components needed to install:
   - requests -> pip install requests

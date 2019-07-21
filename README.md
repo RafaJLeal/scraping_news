@@ -19,3 +19,7 @@ Deployment of the application:
     - python manage.py collectstatic
     - python manage.py runserver
   - Access via web to http://localhost:8000
+  
+Admin user:
+  - username: "admin"
+  - password: "asdflkjh"
